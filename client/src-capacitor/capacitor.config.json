@@ -1,0 +1,7 @@
+{
+  "appId": "cn.xswhb.chat",
+  "appName": "Quasar App",
+  "bundledWebRuntime": false,
+  "npmClient": "yarn",
+  "webDir": "www"
+}

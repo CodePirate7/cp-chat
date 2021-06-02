@@ -1,0 +1,12 @@
+{
+  "name": "client",
+  "version": "0.0.1",
+  "description": "A Quasar Framework app",
+  "author": "q389491729 <389491729@qq.com>",
+  "private": true,
+  "dependencies": {
+    "@capacitor/android": "2.4.7",
+    "@capacitor/cli": "^2.0.0",
+    "@capacitor/core": "^2.0.0"
+  }
+}

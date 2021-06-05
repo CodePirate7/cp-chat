@@ -207,7 +207,8 @@ export default defineComponent({
         let currentPath = route.fullPath;
         if (currentPath === "/") return "消息";
         else if (currentPath.includes("/chat"))
-          return store.state.user.activeUser?.nickName;
+          // @ts-ignore
+          return store.state.user.activeUser?.nickname;
         else if (currentPath.includes("/community")) return "社区";
         else if (currentPath.includes("/found")) return "发现";
         else if (currentPath.includes("/my")) return "个人资料";

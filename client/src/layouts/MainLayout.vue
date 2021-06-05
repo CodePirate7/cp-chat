@@ -2,7 +2,7 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
-        <q-avatar v-if="path === '/'">
+        <q-avatar v-if="!isNeedBack">
           <img :src="user?.avatar" />
         </q-avatar>
 
@@ -60,18 +60,8 @@
       <router-view />
     </q-page-container>
 
-    <q-footer
-      bordered
-      class="bg-white text-primary"
-      v-if="!path.includes('chat')"
-    >
-      <q-tabs
-        v-model="tab"
-        narrow-indicator
-        dense
-        align="justify"
-        class="shadow-2"
-      >
+    <q-footer bordered v-if="!path.includes('chat')">
+      <q-tabs v-model="tab" narrow-indicator dense align="justify">
         <q-route-tab
           :ripple="false"
           name="mails"
@@ -80,13 +70,26 @@
           to="/"
           exact
         />
-        <q-route-tab :ripple="false" name="alarms" icon="apps" label="应用" />
+        <q-route-tab
+          :ripple="false"
+          name="alarms"
+          icon="apps"
+          label="应用"
+          to="/apps"
+        />
         <q-route-tab
           :ripple="false"
           name="movies"
           icon="grade"
           label="发现"
           to="/found"
+        />
+        <q-route-tab
+          :ripple="false"
+          name="user"
+          icon="person"
+          label="个人"
+          to="/my"
         />
       </q-tabs>
     </q-footer>
@@ -149,6 +152,12 @@ export default defineComponent({
       avatar: "",
     };
 
+    const isNeedBack = computed(() => {
+      const path = route.fullPath;
+      const pass = ["/", "/found", "/my", "/apps"];
+      return !pass.some((p) => p === path);
+    });
+
     const form = reactive({ ...initState });
 
     const editor = ref("");
@@ -198,9 +207,13 @@ export default defineComponent({
         let currentPath = route.fullPath;
         if (currentPath === "/") return "消息";
         else if (currentPath.includes("/chat"))
-          return store.state.user.activeUser?.nickname;
+          return store.state.user.activeUser?.nickName;
         else if (currentPath.includes("/community")) return "社区";
         else if (currentPath.includes("/found")) return "发现";
+        else if (currentPath.includes("/my")) return "个人资料";
+        else if (currentPath.includes("/apps")) return "应用";
+        else if (currentPath === "/app")
+          return store.state.user.activeApp?.label;
       }),
       path: computed(() => route.fullPath),
       tab: ref("mails"),
@@ -214,6 +227,7 @@ export default defineComponent({
       handleSubmit,
       editor,
       form,
+      isNeedBack,
     };
   },
 });

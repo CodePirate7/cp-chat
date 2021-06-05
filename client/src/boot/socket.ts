@@ -1,5 +1,5 @@
 import { IMessage } from "./../interface";
-//@ts-nocheck
+// @ts-ignore
 import io, { Socket } from "socket.io-client";
 import { Store as VuexStore } from "vuex";
 import { StateInterface } from "src/store";
@@ -36,6 +36,8 @@ class IoService {
       );
       if (idx !== -1) {
         store.commit("user/doMessageUpdate", { idx, message: newMessage });
+      } else {
+        store.dispatch("user/doConversationList");
       }
     });
   }

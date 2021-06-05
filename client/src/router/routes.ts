@@ -22,6 +22,18 @@ const routes: RouteRecordRaw[] = [
         path: "/found/community",
         component: () => import("pages/community.vue"),
       },
+      {
+        path: "my",
+        component: () => import("pages/my.vue"),
+      },
+      {
+        path: "apps",
+        component: () => import("pages/apps.vue"),
+      },
+      {
+        path: "app",
+        component: () => import("pages/app.vue"),
+      },
     ],
   },
   {

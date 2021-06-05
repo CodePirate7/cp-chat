@@ -12,6 +12,9 @@ const mutation: MutationTree<UserStateInterface> = {
   doCommunityListUpdate(state, payload) {
     state.communityList = payload;
   },
+  doActiveApp(state, payload) {
+    state.activeApp = payload;
+  },
 };
 
 export default mutation;

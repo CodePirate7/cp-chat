@@ -54,7 +54,7 @@
         />
 
         <div class="text-right">
-          <q-btn label="重置" class="q-mr-md" @click="onReset" />
+          <q-btn label="取消" class="q-mr-md" @click="onReset" />
           <q-btn label="确定" color="primary" @click="onSubmit" />
         </div>
       </q-form>
@@ -96,10 +96,7 @@ export default defineComponent({
     }
 
     function onReset() {
-      form.name = "";
-      form.avatar = "";
-      form.introduction = "";
-      form.users = [];
+      ctx.emit("ok");
     }
 
     return {

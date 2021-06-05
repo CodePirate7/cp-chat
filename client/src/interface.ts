@@ -1,8 +1,14 @@
 export interface IUser {
   id: string;
   email: string;
-  nickname: string;
+  nickName: string;
   avatar: string;
+}
+
+export interface IApp {
+  label: string;
+  url: string;
+  icon: string;
 }
 
 export interface IMessage {

@@ -1,4 +1,4 @@
-import { ICommunityItem, IUser } from "./../../interface";
+import { IApp, ICommunityItem, IUser } from "./../../interface";
 import { IConversation } from "src/interface";
 
 export interface UserStateInterface {
@@ -6,6 +6,7 @@ export interface UserStateInterface {
   conversationList: IConversation[];
   activeUser: IUser | null;
   communityList: ICommunityItem[];
+  activeApp: IApp | null;
 }
 
 function state(): UserStateInterface {
@@ -14,6 +15,7 @@ function state(): UserStateInterface {
     conversationList: [],
     activeUser: null,
     communityList: [],
+    activeApp: null,
   };
 }
 
